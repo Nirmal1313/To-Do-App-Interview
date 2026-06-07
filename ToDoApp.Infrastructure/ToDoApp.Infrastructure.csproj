@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Repositories\UserManagementRepository\**" />
+    <EmbeddedResource Remove="Repositories\UserManagementRepository\**" />
+    <None Remove="Repositories\UserManagementRepository\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ToDoApp.Application\ToDoApp.Application.csproj" />
+    <ProjectReference Include="..\ToDoApp.Domain\ToDoApp.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

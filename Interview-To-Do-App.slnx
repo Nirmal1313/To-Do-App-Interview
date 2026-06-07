@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="ToDoApp.API/ToDoApp.API.csproj" Id="73843a08-8f77-4b22-970d-c746644715e8" />
+  <Project Path="ToDoApp.Application/ToDoApp.Application.csproj" Id="00f278a1-53a6-4763-bd90-495b0603e407" />
+  <Project Path="ToDoApp.Domain/ToDoApp.Domain.csproj" Id="cfaac796-04aa-473f-9bac-cb795942e2f1" />
+  <Project Path="ToDoApp.Infrastructure/ToDoApp.Infrastructure.csproj" Id="f26a1d6c-2b7d-4767-a203-b7630817385e" />
+  <Project Path="ToDoApp.Tests/ToDoApp.Tests.csproj" Id="c4336ae1-b97f-47f8-a667-e0531ffd9495" />
+</Solution>
