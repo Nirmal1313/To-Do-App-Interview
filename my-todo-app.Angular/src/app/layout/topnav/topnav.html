@@ -1,0 +1,30 @@
+<div class="app-shell">
+
+  <p-toolbar class="app-toolbar">
+    <ng-template #start>
+      <div class="toolbar-brand">
+        <p-button icon="pi pi-bars" [text]="true" [rounded]="true" severity="secondary" (click)="toggleSidebar()" />
+        <i class="pi pi-check-square brand-icon"></i>
+        <span class="brand-name">My Todo App</span>
+      </div>
+    </ng-template>
+    <ng-template #end>
+      <p-avatar label="U" shape="circle" size="normal" class="nav-avatar" />
+    </ng-template>
+  </p-toolbar>
+
+  <div class="app-body">
+    <app-leftnav [collapsed]="collapsed()" />
+    <main class="app-main">
+      <div class="breadcrumb-strip">
+        <p-breadcrumb [model]="breadcrumbItems" [home]="homeItem" />
+      </div>
+      <div class="page-content">
+        <router-outlet />
+      </div>
+    </main>
+  </div>
+
+  <app-footer />
+
+</div>

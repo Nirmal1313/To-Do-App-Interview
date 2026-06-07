@@ -1,0 +1,23 @@
+<div class="error-page">
+  <div class="error-card">
+
+    <div class="error-icon-wrap">
+      <i class="pi pi-map error-icon"></i>
+    </div>
+
+    <div class="error-code">404</div>
+
+    <h1 class="error-title">Page Not Found</h1>
+    <p class="error-message">
+      Looks like this page wandered off somewhere.<br />
+      The page does not exist or may have been moved.
+    </p>
+
+    <div class="error-actions">
+      <p-button label="Back to Dashboard" icon="pi pi-home" routerLink="/dashboard" />
+      <p-button label="Go Back" icon="pi pi-arrow-left" severity="secondary"
+        [outlined]="true" (click)="goBack()" />
+    </div>
+
+  </div>
+</div>

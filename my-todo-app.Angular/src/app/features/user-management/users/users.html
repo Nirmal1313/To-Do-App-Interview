@@ -1,0 +1,124 @@
+<div class="users-page">
+  <div class="page-header">
+    <h2 class="page-title">Users</h2>
+    <span class="page-sub">{{ users.length }} members in your workspace</span>
+  </div>
+
+  <p-table
+    [value]="users"
+    [paginator]="true"
+    [rows]="6"
+    [globalFilterFields]="['firstName','lastName','email']"
+    #dt
+    class="p-datatable-sm"
+  >
+    <ng-template #caption>
+      <div class="table-caption">
+        <span class="search-wrap">
+          <i class="pi pi-search"></i>
+          <input
+            pInputText
+            type="text"
+            placeholder="Search by name or email..."
+            (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+          />
+        </span>
+      </div>
+    </ng-template>
+
+    <ng-template #header>
+      <tr>
+        <th>User</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Last Updated</th>
+        <th style="width: 6rem"></th>
+      </tr>
+    </ng-template>
+
+    <ng-template #body let-user>
+      <tr [class.row-deleted]="user.isDeleted">
+        <td>
+          <div class="user-cell">
+            <p-avatar
+              [label]="initials(user)"
+              shape="circle"
+              size="normal"
+              [style]="user.isDeleted
+                ? { background: 'var(--p-surface-400)', color: '#fff', fontWeight: '600', fontSize: '0.75rem' }
+                : { background: 'var(--p-primary-color)', color: '#fff', fontWeight: '600', fontSize: '0.75rem' }"
+            />
+            <span class="user-name">{{ fullName(user) }}</span>
+          </div>
+        </td>
+        <td class="text-muted">{{ user.email }}</td>
+        <td>
+          <p-tag
+            [value]="user.isDeleted ? 'Deleted' : 'Active'"
+            [severity]="user.isDeleted ? 'danger' : 'success'"
+          />
+        </td>
+        <td class="text-muted">{{ formatDate(user.lastUpdatedDate) }}</td>
+        <td>
+          <div class="row-actions">
+            <p-button
+              icon="pi pi-pencil"
+              [text]="true" [rounded]="true"
+              severity="secondary"
+              pTooltip="Edit" tooltipPosition="top"
+              [disabled]="user.isDeleted"
+              (click)="openEdit(user)"
+            />
+            <p-button
+              icon="pi pi-trash"
+              [text]="true" [rounded]="true"
+              severity="danger"
+              pTooltip="Delete" tooltipPosition="top"
+              [disabled]="user.isDeleted"
+              (click)="deleteUser(user, $event)"
+            />
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template #emptymessage>
+      <tr>
+        <td colspan="5" class="empty-row">No users found.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<p-dialog
+  [(visible)]="editVisible"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [style]="{ width: '26rem' }"
+  header="Edit User"
+>
+  <div class="edit-form">
+    <div class="form-row">
+      <div class="form-field">
+        <label>First Name</label>
+        <input pInputText [(ngModel)]="editForm.firstName" />
+      </div>
+      <div class="form-field">
+        <label>Last Name</label>
+        <input pInputText [(ngModel)]="editForm.lastName" />
+      </div>
+    </div>
+    <div class="form-field">
+      <label>Email</label>
+      <input pInputText [(ngModel)]="editForm.email" type="email" />
+    </div>
+  </div>
+
+  <ng-template #footer>
+    <p-button label="Cancel" severity="secondary" (click)="editVisible = false" />
+    <p-button label="Save" (click)="saveUser()" />
+  </ng-template>
+</p-dialog>
+
+<p-confirmDialog />

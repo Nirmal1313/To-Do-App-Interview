@@ -1,0 +1,48 @@
+<div class="auth-page">
+  <div class="auth-card">
+
+    <div class="auth-header">
+      <h1>Create Account</h1>
+      <p>Sign up to get started with My Todo App</p>
+    </div>
+
+    <div class="name-row">
+      <div class="form-field">
+        <label for="firstName">First Name</label>
+        <input pInputText id="firstName" type="text" placeholder="First name"
+          [(ngModel)]="firstName" fluid />
+      </div>
+      <div class="form-field">
+        <label for="lastName">Last Name</label>
+        <input pInputText id="lastName" type="text" placeholder="Last name"
+          [(ngModel)]="lastName" fluid />
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="email">Email</label>
+      <input pInputText id="email" type="email" placeholder="Enter your email"
+        [(ngModel)]="email" fluid />
+    </div>
+
+    <div class="form-field">
+      <label for="password">Password</label>
+      <p-password inputId="password" [(ngModel)]="password"
+        placeholder="Min. 10 characters" [toggleMask]="true" [feedback]="true" [fluid]="true" />
+    </div>
+
+    <div class="form-field">
+      <label for="confirmPassword">Confirm Password</label>
+      <p-password inputId="confirmPassword" [(ngModel)]="confirmPassword"
+        placeholder="Repeat your password" [toggleMask]="true" [feedback]="false" [fluid]="true" />
+    </div>
+
+    <p-button label="Create Account" [fluid]="true" [loading]="loading" (click)="register()" />
+
+    <div class="auth-footer">
+      Already have an account?
+      <a routerLink="/login">Sign in</a>
+    </div>
+
+  </div>
+</div>

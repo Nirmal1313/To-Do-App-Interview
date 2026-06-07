@@ -1,0 +1,7 @@
+// auth styles are in styles.scss
+
+.name-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}

@@ -1,0 +1,11 @@
+.form-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.5rem;
+}
+
+.forgot-link {
+    color: var(--p-primary-color);
+    cursor: pointer;
+    font-size: 0.875rem;
+}

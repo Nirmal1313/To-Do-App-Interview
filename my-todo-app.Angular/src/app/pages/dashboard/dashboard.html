@@ -1,0 +1,73 @@
+<div class="dashboard">
+
+  <div class="dash-header">
+    <div>
+      <h2 class="page-title">Dashboard</h2>
+      <p class="page-subtitle">Welcome back. Here is an overview of your workspace.</p>
+    </div>
+  </div>
+
+  @if (loading) {
+    <div class="dash-loading">
+      <p-progressSpinner strokeWidth="4" />
+      <span>Loading your workspace…</span>
+    </div>
+  }
+
+  <div class="stats-grid">
+    @for (stat of stats; track stat.label) {
+      <div class="stat-card" [attr.data-type]="stat.type">
+        <div class="stat-head">
+          <span class="stat-label">{{ stat.label }}</span>
+          <div class="stat-icon" [class]="'icon-' + stat.type">
+            <i [class]="stat.icon"></i>
+          </div>
+        </div>
+        <span class="stat-value">{{ stat.value }}</span>
+        <span class="stat-sub">{{ stat.sub }}</span>
+        @if (stat.pct !== null) {
+          <p-progressbar [value]="stat.pct" [showValue]="false"
+            class="stat-bar" [class]="'bar-' + stat.type" />
+        }
+      </div>
+    }
+  </div>
+
+  <div class="recent-header">
+    <div>
+      <h3 class="recent-title">Recent Tasks</h3>
+      <span class="recent-sub">Latest activity across all lists</span>
+    </div>
+  </div>
+
+  <div class="recent-card">
+    @for (task of recentTasks; track task.id) {
+      <div class="recent-row" [class.recent-done]="task.isCompleted"
+           [attr.data-priority]="task.priority">
+        <i class="pi status-icon"
+           [class.pi-check-circle]="task.isCompleted"
+           [class.pi-circle]="!task.isCompleted"
+           [class.done-color]="task.isCompleted"></i>
+
+        <span class="recent-title-text">{{ task.title }}</span>
+
+        <div class="recent-meta">
+          <p-tag [value]="priorityLabel(task.priority)" [severity]="prioritySeverity(task.priority)" />
+          <p-tag [value]="statusLabel(task.status)" [severity]="statusSeverity(task.status)" />
+          <span class="recent-due" [class.recent-overdue]="isOverdue(task.dueDate, task.isCompleted)">
+            <i class="pi pi-calendar"></i>
+            {{ formatDue(task.dueDate) }}
+          </span>
+        </div>
+      </div>
+    } @empty {
+      @if (!loading) {
+        <div class="recent-empty">
+          <i class="pi pi-inbox"></i>
+          <span>No tasks yet. Head to <strong>My Tasks</strong> to add your first one.</span>
+        </div>
+      }
+    }
+  </div>
+
+</div>

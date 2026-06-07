@@ -1,0 +1,105 @@
+.users-page {
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.page-header {
+  margin-bottom: 1.5rem;
+
+  .page-title {
+    margin: 0 0 0.25rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .page-sub {
+    font-size: 0.875rem;
+    color: var(--p-text-muted-color);
+  }
+}
+
+.table-caption {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5rem 0;
+
+  .search-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    i {
+      position: absolute;
+      left: 0.65rem;
+      color: var(--p-text-muted-color);
+      font-size: 0.85rem;
+      pointer-events: none;
+    }
+
+    input {
+      width: 18rem;
+      padding-left: 2rem;
+    }
+  }
+}
+
+.user-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  .user-name {
+    font-weight: 500;
+  }
+}
+
+.text-muted {
+  color: var(--p-text-muted-color);
+  font-size: 0.875rem;
+}
+
+.row-deleted {
+  opacity: 0.55;
+}
+
+.row-actions {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.empty-row {
+  text-align: center;
+  color: var(--p-text-muted-color);
+  padding: 2rem !important;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0.25rem 0;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+
+  label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--p-text-muted-color);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  input {
+    width: 100%;
+  }
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}

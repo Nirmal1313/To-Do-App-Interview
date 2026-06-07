@@ -1,0 +1,32 @@
+<div class="auth-page">
+  <div class="auth-card">
+
+    <div class="auth-header">
+      <h1>Welcome Back</h1>
+      <p>Sign in to your To Do App</p>
+    </div>
+
+    <div class="form-field">
+      <label for="email">Email</label>
+      <input pInputText id="email" type="email" placeholder="Enter your email" [(ngModel)]="email" fluid />
+    </div>
+
+    <div class="form-field">
+      <label for="password">Password</label>
+      <p-password inputId="password" [(ngModel)]="password" placeholder="Enter your password"
+        [toggleMask]="true" [feedback]="false" [fluid]="true" />
+    </div>
+
+    <div class="form-footer">
+      <a class="forgot-link" routerLink="/forgot-password">Forgot password?</a>
+    </div>
+
+    <p-button label="Sign In" [fluid]="true" [loading]="loading" (click)="login()" />
+
+    <div class="auth-footer">
+      No account yet?
+      <a routerLink="/register">Create Account</a>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<nav class="sidebar" [class.collapsed]="collapsed">
+
+  <ul class="nav-list">
+    @for (item of navItems; track item.route) {
+      <li>
+        <a class="nav-item"
+          [routerLink]="item.route"
+          routerLinkActive="active"
+          [pTooltip]="collapsed ? item.label : ''"
+          tooltipPosition="right">
+          <i [class]="item.icon"></i>
+          @if (!collapsed) {
+            <span>{{ item.label }}</span>
+          }
+        </a>
+      </li>
+    }
+  </ul>
+
+  <div class="sidebar-spacer"></div>
+
+  <div class="sidebar-user" [class.collapsed]="collapsed">
+    <p-avatar [label]="userInitial" shape="circle" size="normal" class="nav-avatar"
+      [pTooltip]="collapsed ? (userEmail() ?? '') : ''"
+      tooltipPosition="right" />
+    @if (!collapsed) {
+      <div class="user-info">
+        <span class="user-name">{{ userEmail() }}</span>
+      </div>
+    }
+  </div>
+
+  <button class="logout-btn" [class.collapsed]="collapsed"
+    pTooltip="Logout" [tooltipDisabled]="!collapsed" tooltipPosition="right"
+    (click)="logout()">
+    <i class="pi pi-sign-out"></i>
+    @if (!collapsed) {
+      <span>Logout</span>
+    }
+  </button>
+
+</nav>

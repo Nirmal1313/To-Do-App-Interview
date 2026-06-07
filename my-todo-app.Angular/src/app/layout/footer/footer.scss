@@ -1,0 +1,13 @@
+.app-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 2.5rem;
+    padding: 0.5rem 1.25rem;
+    background: var(--p-surface-card);
+    border-top: 1px solid var(--p-surface-border);
+    font-size: 0.8rem;
+    color: var(--p-text-muted-color);
+    flex-shrink: 0;
+    text-align: center;
+}
